@@ -4,5 +4,6 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
-  site: 'https://www.laglera.com.ar'
+  site: 'https://jonyortegaa.github.io',
+  base: '/Laglera'
 });
