@@ -1,0 +1,65 @@
+---
+import { company } from '../data/company';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-primary text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <!-- Branding -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <img
+            src="/Laglera_Seguros-removebg-preview.png"
+            alt="Laglera Asesores de Seguros"
+            class="h-14 w-auto"
+          />
+        </div>
+        <p class="text-white/70 text-sm leading-relaxed">
+          Estamos aquí para ayudarte siempre. Más de 20 años brindando tranquilidad a familias y empresas en Puerto Madryn.
+        </p>
+      </div>
+
+      <!-- Contacto -->
+      <div>
+        <h3 class="font-semibold text-lg mb-4">Contacto</h3>
+        <ul class="space-y-3 text-white/70 text-sm">
+          <li>
+            <a href={`mailto:${company.email}`} class="hover:text-white transition-colors">
+              {company.email}
+            </a>
+          </li>
+          <li>
+            <a href={`tel:${company.phone}`} class="hover:text-white transition-colors">
+              {company.phone}
+            </a>
+          </li>
+          <li>{company.address.full}</li>
+          <li>{company.hours}</li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <h3 class="font-semibold text-lg mb-4">Información Legal</h3>
+        <div class="text-white/70 text-sm space-y-3">
+          <p>
+            <span class="font-medium text-white">N° de Inscripción SSN:</span><br />
+            {company.ssnRegistration}
+          </p>
+          <p class="text-xs leading-relaxed">
+            Superintendencia de Seguros de la Nación - Organismo de control de la actividad aseguradora en Argentina.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom row -->
+    <div class="border-t border-white/10 mt-10 pt-8 flex items-center justify-center">
+      <p class="text-white/50 text-sm">
+        &copy; {currentYear} {company.name}. Todos los derechos reservados.
+      </p>
+    </div>
+  </div>
+</footer>

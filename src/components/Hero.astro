@@ -1,0 +1,36 @@
+---
+import { company } from '../data/company';
+---
+
+<section id="inicio" class="relative min-h-[600px] lg:min-h-[700px] flex items-center pt-20 scroll-mt-20">
+  <!-- Background image: Reemplazar con foto real de la fachada del local -->
+  <div class="absolute inset-0">
+    <img
+      src="/hero-fachada.jpg"
+      alt="Fachada de Laglera Asesores de Seguros en Puerto Madryn"
+      class="w-full h-full object-cover object-top"
+    />
+    <!-- Overlay oscuro semitransparente -->
+    <div class="absolute inset-0 bg-black/50"></div>
+  </div>
+
+  <!-- Content alineado a la izquierda -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20">
+    <div class="max-w-xl text-left">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-5">
+        Protegemos tu vida
+      </h1>
+      <p class="text-lg sm:text-xl text-white/90 leading-relaxed mb-8">
+        Asesoramiento personalizado para cuidar lo que más valoras
+      </p>
+      <a
+        href={company.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center px-8 py-3.5 bg-[#001F3F] hover:bg-primary-light text-white font-semibold rounded-full transition-colors duration-200 text-lg"
+      >
+        Cotizá ahora
+      </a>
+    </div>
+  </div>
+</section>

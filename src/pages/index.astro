@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import InsuranceCarousel from '../components/InsuranceCarousel.astro';
+import CompaniesCarousel from '../components/CompaniesCarousel.astro';
+import QuoteSection from '../components/QuoteSection.astro';
+import Location from '../components/Location.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Laglera Asesores de Seguros | Puerto Madryn"
+  description="Agencia de seguros en Puerto Madryn. Cotizá tu seguro de auto, hogar, vida y comercio con atención personalizada."
+>
+  <Header />
+  <main>
+    <Hero />
+    <InsuranceCarousel />
+    <QuoteSection />
+    <CompaniesCarousel />
+    <Location />
+  </main>
+  <Footer />
+</Layout>

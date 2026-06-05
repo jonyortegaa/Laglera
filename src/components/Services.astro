@@ -1,0 +1,43 @@
+---
+const personasServices = [
+  "Auto", "Moto", "Hogar", "Comercio", "Consorcio",
+  "Garantía Alquiler", "Accidentes Personales", "Embarcaciones de Placer", "Vida", "Travel"
+];
+
+const empresasServices = [
+  "Responsabilidad Civil", "Incendio", "Todo Riesgo Operativo", "Seguro Técnico",
+  "Flotas Automotores", "Transporte", "Integral de Comercio y Consorcio",
+  "Caución", "Vida Colectivo", "ART", "Travel Corporativo"
+];
+---
+
+<section id="seguros-lista" class="py-16 bg-white scroll-mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-2 gap-10">
+      <!-- Personas -->
+      <div>
+        <h3 class="text-2xl font-bold text-primary mb-4">Seguros Personas</h3>
+        <ul class="space-y-2">
+          {personasServices.map((s) => (
+            <li class="flex items-center gap-2 text-gray-700">
+              <span class="w-2 h-2 bg-accent rounded-full flex-shrink-0"></span>
+              {s}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <!-- Empresas -->
+      <div>
+        <h3 class="text-2xl font-bold text-primary mb-4">Seguros Empresa</h3>
+        <ul class="space-y-2">
+          {empresasServices.map((s) => (
+            <li class="flex items-center gap-2 text-gray-700">
+              <span class="w-2 h-2 bg-accent rounded-full flex-shrink-0"></span>
+              {s}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

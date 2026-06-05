@@ -1,0 +1,43 @@
+---
+import ServicePage from '../../components/ServicePage.astro';
+---
+
+<ServicePage
+  title="Compra Protegida"
+  headline="Compra Protegida"
+  subtitle="La tranquilidad que necesitás para realizar tus compras."
+  description="Seguro de compra protegida en Puerto Madryn. Protegé las compras realizadas con tarjeta ante robo o daño."
+  coverages={[
+    "Cobertura ante robo del producto comprado",
+    "Cobertura ante daño accidental del producto",
+    "Compras con tarjeta de crédito o débito",
+  ]}
+  benefits={[
+    "Sin deducible por siniestro",
+    "Cobertura de hasta 2 eventos por año",
+    "Planes con cobertura nacional e internacional",
+    "Protección desde el momento de la compra",
+  ]}
+  plans={[
+    {
+      name: "Plan Premium",
+      details: [
+        "Suma asegurada $400.000",
+        "Hasta 2 eventos por año de hasta $200.000 c/u",
+        "Plazo de cobertura: 120 días",
+        "Cobertura a nivel mundial",
+        "Sin deducible por siniestro",
+      ],
+    },
+    {
+      name: "Plan Clásico",
+      details: [
+        "Suma asegurada $360.000",
+        "Hasta 2 eventos por año de hasta $180.000 c/u",
+        "Plazo de cobertura: 90 días",
+        "Cobertura nacional y países limítrofes",
+        "Sin deducible por siniestro",
+      ],
+    },
+  ]}
+/>

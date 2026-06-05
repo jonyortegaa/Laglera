@@ -1,0 +1,150 @@
+---
+interface Company {
+  name: string;
+  logo?: string;
+}
+
+const companies: Company[] = [
+  { name: "Meridional Seguros", logo: "/MeridionalSeguros.svg" },
+  { name: "Zurich", logo: "/ZurichSeguros.svg" },
+  { name: "Mapfre", logo: "/MapfreSeguros.webp" },
+  { name: "CNP", logo: "/CNP.jpg" },
+  { name: "Federación Patronal", logo: "/FederacionPatronal.png" },
+  { name: "Mercantil Andina", logo: "/MercartilAndina.svg" },
+  { name: "San Cristóbal", logo: "/SancristobalSeguros.png" },
+  { name: "Sancor Seguros", logo: "/SancorSeguros.jpg" },
+  { name: "Galicia Seguros", logo: "/GaliciaSeguros.png" },
+  { name: "Provincia Seguros", logo: "/ProvinciaSeguros.png" },
+  { name: "Asociart", logo: "/AsociART.webp" },
+  { name: "Prevención ART", logo: "/PrevencionART.png" },
+  { name: "Berkley ART", logo: "/Berkley.png" },
+  { name: "Andina ART", logo: "/AndinaART.png" },
+  { name: "Provincia ART", logo: "/ProvinciaART.png" },
+];
+---
+
+<section id="companias" class="py-16 bg-gray-50 scroll-mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl sm:text-3xl font-bold text-primary mb-1 text-center">Compañías que nos respaldan</h2>
+    <div class="w-14 h-[3px] bg-accent mb-10 rounded-full mx-auto"></div>
+
+    <div class="relative flex items-center group/carousel">
+      <button class="carousel-prev absolute left-0 z-10 w-9 h-9 bg-primary/90 rounded-full flex items-center justify-center text-white hover:bg-accent transition-all duration-300 shadow-lg opacity-0 group-hover/carousel:opacity-100 -translate-x-1/2" aria-label="Anterior" data-carousel="companies">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" /></svg>
+      </button>
+
+      <div class="overflow-hidden w-full carousel-container" data-carousel="companies">
+        <div class="carousel-track flex items-center transition-transform duration-700 ease-in-out" data-carousel="companies">
+          {companies.map((company) => (
+            <div class="carousel-item flex-shrink-0 px-3" data-carousel="companies">
+              <div class="bg-white rounded-xl border border-gray-200 p-4 flex items-center justify-center hover:shadow-md hover:border-accent/30 transition-all duration-300 w-[150px] sm:w-[170px] h-[90px]">
+                {company.logo ? (
+                  <img src={company.logo} alt={company.name} class="max-h-14 max-w-[130px] object-contain" loading="lazy" />
+                ) : (
+                  <span class="text-sm font-semibold text-gray-600 text-center leading-tight">{company.name}</span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <button class="carousel-next absolute right-0 z-10 w-9 h-9 bg-accent/90 rounded-full flex items-center justify-center text-white hover:bg-primary transition-all duration-300 shadow-lg opacity-0 group-hover/carousel:opacity-100 translate-x-1/2" aria-label="Siguiente" data-carousel="companies">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" /></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const name = 'companies';
+    const track = document.querySelector(`.carousel-track[data-carousel="${name}"]`) as HTMLElement;
+    const prevBtn = document.querySelector(`.carousel-prev[data-carousel="${name}"]`) as HTMLElement;
+    const nextBtn = document.querySelector(`.carousel-next[data-carousel="${name}"]`) as HTMLElement;
+    const container = document.querySelector(`.carousel-container[data-carousel="${name}"]`) as HTMLElement;
+
+    if (!track || !prevBtn || !nextBtn || !container) return;
+
+    let autoplayInterval: ReturnType<typeof setInterval>;
+    let isHovered = false;
+    let isAnimating = false;
+
+    function getItemWidth(): number {
+      const item = track.children[0] as HTMLElement;
+      return item.offsetWidth;
+    }
+
+    function next() {
+      if (isAnimating) return;
+      isAnimating = true;
+      const width = getItemWidth();
+
+      track.style.transition = 'transform 600ms ease-in-out';
+      track.style.transform = `translateX(-${width}px)`;
+
+      track.addEventListener('transitionend', function handler() {
+        track.removeEventListener('transitionend', handler);
+        track.style.transition = 'none';
+        track.style.transform = 'translateX(0)';
+        track.appendChild(track.children[0]);
+        isAnimating = false;
+      });
+    }
+
+    function prev() {
+      if (isAnimating) return;
+      isAnimating = true;
+      const width = getItemWidth();
+
+      track.style.transition = 'none';
+      track.insertBefore(track.children[track.children.length - 1], track.children[0]);
+      track.style.transform = `translateX(-${width}px)`;
+
+      void track.offsetHeight;
+
+      track.style.transition = 'transform 600ms ease-in-out';
+      track.style.transform = 'translateX(0)';
+
+      track.addEventListener('transitionend', function handler() {
+        track.removeEventListener('transitionend', handler);
+        isAnimating = false;
+      });
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      autoplayInterval = setInterval(() => {
+        if (!isHovered) next();
+      }, 2500);
+    }
+
+    function stopAutoplay() {
+      if (autoplayInterval) clearInterval(autoplayInterval);
+    }
+
+    nextBtn.addEventListener('click', () => { next(); startAutoplay(); });
+    prevBtn.addEventListener('click', () => { prev(); startAutoplay(); });
+
+    container.addEventListener('mouseenter', () => { isHovered = true; });
+    container.addEventListener('mouseleave', () => { isHovered = false; });
+
+    let touchStartX = 0;
+    track.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      isHovered = true;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) next();
+        else prev();
+      }
+      isHovered = false;
+      startAutoplay();
+    }, { passive: true });
+
+    startAutoplay();
+  });
+</script>
