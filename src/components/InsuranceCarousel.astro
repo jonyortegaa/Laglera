@@ -182,13 +182,31 @@ const empresas: InsuranceItem[] = [
 
       // Touch support
       let touchStartX = 0;
+      let touchCurrentX = 0;
+      let isDragging = false;
+
       track.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
+        touchStartX = e.changedTouches[0].clientX;
+        touchCurrentX = touchStartX;
+        isDragging = true;
         isHovered = true;
+        track.style.transition = 'none';
       }, { passive: true });
 
-      track.addEventListener('touchend', (e) => {
-        const diff = touchStartX - e.changedTouches[0].screenX;
+      track.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        touchCurrentX = e.changedTouches[0].clientX;
+        const diff = touchCurrentX - touchStartX;
+        track.style.transform = `translateX(${diff}px)`;
+      }, { passive: true });
+
+      track.addEventListener('touchend', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        const diff = touchStartX - touchCurrentX;
+        track.style.transition = 'transform 600ms ease-in-out';
+        track.style.transform = 'translateX(0)';
+
         if (Math.abs(diff) > 50) {
           if (diff > 0) next();
           else prev();
