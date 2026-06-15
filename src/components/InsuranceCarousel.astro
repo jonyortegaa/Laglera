@@ -32,14 +32,15 @@ const empresas: InsuranceItem[] = [
 ];
 ---
 
-<section id="seguros" class="py-20 bg-white scroll-mt-20">
+<section id="seguros" class="pt-12 pb-20 bg-white scroll-mt-20">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 italic mb-10">Cubrimos cada una de tus necesidades.</h2>
+    <h2 class="text-2xl sm:text-3xl font-bold text-primary mb-2">Cubrimos cada una de tus necesidades</h2>
+    <div class="w-14 h-[3px] bg-accent rounded-full mb-10"></div>
 
     <!-- Seguros Personas -->
     <div class="mb-16">
-      <h3 class="text-2xl sm:text-3xl font-bold text-primary mb-1">Seguros Personas</h3>
+      <h3 class="text-xl sm:text-2xl font-bold text-primary mb-1">Seguros Personas</h3>
       <div class="w-14 h-[3px] bg-accent mb-8 rounded-full"></div>
 
       <div class="relative flex items-center group/carousel">
@@ -55,7 +56,7 @@ const empresas: InsuranceItem[] = [
                   <div class="w-14 h-14 mx-auto mb-3 flex items-center justify-center text-accent">
                     <Fragment set:html={item.icon} />
                   </div>
-                  <h3 class="text-xs sm:text-sm font-medium text-gray-700 leading-tight">{item.title}</h3>
+                  <p class="text-xs sm:text-sm font-medium text-gray-700 leading-tight">{item.title}</p>
                 </div>
               </div>
             ))}
@@ -70,7 +71,7 @@ const empresas: InsuranceItem[] = [
 
     <!-- Seguros Empresas -->
     <div>
-      <h2 class="text-2xl sm:text-3xl font-bold text-primary mb-1">Seguros Empresas</h2>
+      <h3 class="text-xl sm:text-2xl font-bold text-primary mb-1">Seguros Empresas</h3>
       <div class="w-14 h-[3px] bg-accent mb-8 rounded-full"></div>
 
       <div class="relative flex items-center group/carousel">
@@ -86,7 +87,7 @@ const empresas: InsuranceItem[] = [
                   <div class="w-14 h-14 mx-auto mb-3 flex items-center justify-center text-accent">
                     <Fragment set:html={item.icon} />
                   </div>
-                  <h3 class="text-xs sm:text-sm font-medium text-gray-700 leading-tight">{item.title}</h3>
+                  <p class="text-xs sm:text-sm font-medium text-gray-700 leading-tight">{item.title}</p>
                 </div>
               </div>
             ))}

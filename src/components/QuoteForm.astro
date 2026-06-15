@@ -1,13 +1,25 @@
 ---
 ---
 
-<section id="cotizar" class="py-20 bg-white scroll-mt-20">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 sm:p-10">
-      <h2 class="text-2xl sm:text-3xl font-bold text-primary italic mb-2">
+<section id="cotizar" class="relative py-20 bg-gradient-to-br from-primary to-primary-light overflow-hidden scroll-mt-20">
+  <!-- Decoración de fondo -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-0 left-0 w-72 h-72 bg-accent rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl translate-x-1/3 translate-y-1/3"></div>
+  </div>
+
+  <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10">
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">
         Cotizá tu seguro
       </h2>
-      <div class="w-14 h-[3px] bg-accent mb-8 rounded-full"></div>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+        Contactanos, a la brevedad estaremos enviándotela.
+      </p>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-lg p-8 sm:p-10">
+      <p class="text-sm text-gray-500 mb-6">Seleccioná el tipo de seguro y completá tus datos. Te responderemos a la brevedad.</p>
 
       <form id="quote-form" class="space-y-6">
         <!-- Selector de tipo de seguro -->
@@ -26,7 +38,7 @@
             <option value="accidentes-personales">Accidentes Personales</option>
             <option value="hogar">Hogar</option>
             <option value="comercio-consorcio">Comercio / Consorcio</option>
-            <option value="consulta-general">Consulta General</option>
+
           </select>
           <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
@@ -67,10 +79,8 @@
               <label class="absolute -top-2.5 left-3 bg-white px-1 text-xs font-medium text-accent">Forma de Pago *</label>
               <select name="forma-pago" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors appearance-none bg-white">
                 <option value="">Seleccioná forma de pago</option>
-                <option value="mensual">Mensual</option>
-                <option value="trimestral">Trimestral</option>
-                <option value="semestral">Semestral</option>
-                <option value="anual">Anual</option>
+                <option value="efectivo">Efectivo</option>
+                <option value="debito-automatico">Débito Automático</option>
               </select>
             </div>
 
@@ -91,8 +101,8 @@
                 <input type="number" name="anio" required placeholder="Año" min="1990" max="2027" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" />
               </div>
               <div class="relative">
-                <label class="absolute -top-2.5 left-3 bg-white px-1 text-xs font-medium text-accent">Dominio (Patente) *</label>
-                <input type="text" name="dominio" required placeholder="ABC 123" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" />
+                <label class="absolute -top-2.5 left-3 bg-white px-1 text-xs font-medium text-accent">Dominio (Patente)</label>
+                <input type="text" name="dominio" placeholder="ABC 123 (opcional)" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" />
               </div>
             </div>
           </div>
@@ -185,40 +195,19 @@
             </div>
           </div>
 
-          <!-- ===== CAMPOS CONSULTA GENERAL ===== -->
-          <div id="campos-consulta" class="space-y-4 hidden">
-            <h3 class="text-sm font-semibold text-primary uppercase tracking-wide border-b border-gray-200 pb-2">
-              Datos de Contacto
-            </h3>
+
+
+          <!-- ===== EMAIL Y CELULAR DE CONTACTO (común a todos) ===== -->
+          <div id="campo-email" class="hidden">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div class="relative">
-                <label class="absolute -top-2.5 left-3 bg-white px-1 text-xs font-medium text-accent">Apellido y Nombre *</label>
-                <input type="text" name="nombre-consulta" required placeholder="Apellido y Nombre" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" />
+                <label class="absolute -top-2.5 left-3 bg-white px-1 text-xs font-medium text-accent">Email de contacto *</label>
+                <input type="email" name="email" required placeholder="Email de contacto" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" />
               </div>
               <div class="relative">
                 <label class="absolute -top-2.5 left-3 bg-white px-1 text-xs font-medium text-accent">Celular *</label>
-                <input type="tel" name="celular-consulta" required placeholder="Ej: 280 4XX-XXXX" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" />
+                <input type="tel" name="celular" required placeholder="Ej: 280 4XX-XXXX" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" />
               </div>
-              <div class="relative">
-                <label class="absolute -top-2.5 left-3 bg-white px-1 text-xs font-medium text-accent">Email *</label>
-                <input type="email" name="email-consulta" required placeholder="Email de contacto" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" />
-              </div>
-              <div class="relative">
-                <label class="absolute -top-2.5 left-3 bg-white px-1 text-xs font-medium text-accent">Rubro a cotizar *</label>
-                <input type="text" name="rubro-consulta" required placeholder="Rubro a cotizar" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" />
-              </div>
-              <div class="relative sm:col-span-2">
-                <label class="absolute -top-2.5 left-3 bg-white px-1 text-xs font-medium text-accent">Motivo de Consulta *</label>
-                <textarea name="motivo-consulta" rows="3" required placeholder="Describí brevemente tu consulta" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none"></textarea>
-              </div>
-            </div>
-          </div>
-
-          <!-- ===== EMAIL DE CONTACTO (común a todos) ===== -->
-          <div id="campo-email" class="hidden">
-            <div class="relative">
-              <label class="absolute -top-2.5 left-3 bg-white px-1 text-xs font-medium text-accent">Email de contacto *</label>
-              <input type="email" name="email" required placeholder="Email de contacto" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors" />
             </div>
           </div>
 
@@ -239,7 +228,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
               </svg>
-              Enviar Cotización
+              Enviar Solicitud
             </button>
           </div>
         </div>
@@ -257,7 +246,6 @@
     const camposAccidentes = document.getElementById('campos-accidentes')!;
     const camposHogar = document.getElementById('campos-hogar')!;
     const camposComercio = document.getElementById('campos-comercio')!;
-    const camposConsulta = document.getElementById('campos-consulta')!;
     const campoEmail = document.getElementById('campo-email')!;
     const campoComentarios = document.getElementById('campo-comentarios')!;
     const campoSubmit = document.getElementById('campo-submit')!;
@@ -265,7 +253,7 @@
     const fieldLugarGuarda = document.getElementById('field-lugar-guarda')!;
 
     // Todos los bloques específicos
-    const allSpecific = [camposAutomotor, camposAccidentes, camposHogar, camposComercio, camposConsulta];
+    const allSpecific = [camposAutomotor, camposAccidentes, camposHogar, camposComercio];
 
     function hideAll() {
       dynamicFields.classList.add('hidden');
@@ -292,7 +280,9 @@
       datosTomador.querySelectorAll('input').forEach(el => {
         el.setAttribute('required', '');
       });
-      campoEmail.querySelector('input')!.setAttribute('required', '');
+      campoEmail.querySelectorAll('input').forEach(el => {
+        el.setAttribute('required', '');
+      });
     }
 
     function setRequiredInSection(section: HTMLElement) {
@@ -340,14 +330,7 @@
           setRequiredInSection(camposComercio);
           break;
 
-        case 'consulta-general':
-          // Consulta general no usa datos del tomador completos
-          datosTomador.classList.add('hidden');
-          campoEmail.classList.add('hidden');
-          campoComentarios.classList.add('hidden');
-          camposConsulta.classList.remove('hidden');
-          setRequiredInSection(camposConsulta);
-          break;
+
       }
 
       // Animación suave
@@ -367,59 +350,52 @@
       const formData = new FormData(form);
       const tipo = select.options[select.selectedIndex].text;
 
-      let mensaje = `🛡️ *Solicitud de Cotización*\n\n`;
-      mensaje += `📋 *Tipo de Seguro:* ${tipo}\n\n`;
-      mensaje += `👤 *Datos del Tomador:*\n`;
-      mensaje += `• Nombre: ${formData.get('nombre')}\n`;
-      mensaje += `• DNI: ${formData.get('dni')}\n`;
-      mensaje += `• Fecha Nac.: ${formData.get('fecha-nacimiento')}\n`;
-      mensaje += `• Lugar: ${formData.get('lugar')}\n`;
+      let mensaje = `*Solicitud de Cotizaci\u00F3n*\n\n`;
+      mensaje += `*Tipo de Seguro:* ${tipo}\n\n`;
+      mensaje += `*Datos del Tomador:*\n`;
+      mensaje += `- Nombre: ${formData.get('nombre')}\n`;
+      mensaje += `- DNI: ${formData.get('dni')}\n`;
+      mensaje += `- Fecha Nac.: ${formData.get('fecha-nacimiento')}\n`;
+      mensaje += `- Lugar: ${formData.get('lugar')}\n`;
 
       const value = select.value;
 
       if (value === 'automotor') {
-        mensaje += `• Forma de Pago: ${formData.get('forma-pago')}\n\n`;
-        mensaje += `🚗 *Datos del Vehículo:*\n`;
-        mensaje += `• Marca: ${formData.get('marca')}\n`;
-        mensaje += `• Modelo: ${formData.get('modelo')}\n`;
-        mensaje += `• Año: ${formData.get('anio')}\n`;
-        mensaje += `• Dominio: ${formData.get('dominio')}\n`;
+        mensaje += `- Forma de Pago: ${formData.get('forma-pago')}\n\n`;
+        mensaje += `*Datos del Veh\u00EDculo:*\n`;
+        mensaje += `- Marca: ${formData.get('marca')}\n`;
+        mensaje += `- Modelo: ${formData.get('modelo')}\n`;
+        mensaje += `- A\u00F1o: ${formData.get('anio')}\n`;
+        const dominio = formData.get('dominio');
+        if (dominio) {
+          mensaje += `- Dominio: ${dominio}\n`;
+        }
       } else if (value === 'accidentes-personales') {
-        mensaje += `\n⚠️ *Riesgo a Cubrir:*\n`;
-        mensaje += `• Actividad: ${formData.get('actividad')}\n`;
-        mensaje += `• Vigencia: ${formData.get('vigencia')}\n`;
-        mensaje += `• Usa moto/vehículo: ${formData.get('uso-moto')}\n`;
+        mensaje += `\n*Riesgo a Cubrir:*\n`;
+        mensaje += `- Actividad: ${formData.get('actividad')}\n`;
+        mensaje += `- Vigencia: ${formData.get('vigencia')}\n`;
+        mensaje += `- Usa moto/veh\u00EDculo: ${formData.get('uso-moto')}\n`;
       } else if (value === 'hogar') {
-        mensaje += `\n🏠 *Datos del Inmueble:*\n`;
-        mensaje += `• M² Cubiertos: ${formData.get('metros')}\n`;
-        mensaje += `• Pared/Techos: ${formData.get('pared-techos')}\n`;
-        mensaje += `• Puerta Seguridad: ${formData.get('puerta-seguridad')}\n`;
-        mensaje += `• Alarma: ${formData.get('alarma')}\n`;
-        mensaje += `• Tipo Vivienda: ${formData.get('tipo-vivienda')}\n`;
+        mensaje += `\n*Datos del Inmueble:*\n`;
+        mensaje += `- M\u00B2 Cubiertos: ${formData.get('metros')}\n`;
+        mensaje += `- Pared/Techos: ${formData.get('pared-techos')}\n`;
+        mensaje += `- Puerta Seguridad: ${formData.get('puerta-seguridad')}\n`;
+        mensaje += `- Alarma: ${formData.get('alarma')}\n`;
+        mensaje += `- Tipo Vivienda: ${formData.get('tipo-vivienda')}\n`;
       } else if (value === 'comercio-consorcio') {
-        mensaje += `\n🏪 *Datos del Comercio:*\n`;
-        mensaje += `• M² Cubiertos: ${formData.get('metros-comercio')}\n`;
-        mensaje += `• Pared/Techos: ${formData.get('pared-techos-comercio')}\n`;
-        mensaje += `• Actividad Comercial: ${formData.get('actividad-comercial')}\n`;
-      } else if (value === 'consulta-general') {
-        mensaje = `📩 *Consulta General*\n\n`;
-        mensaje += `👤 *Datos de Contacto:*\n`;
-        mensaje += `• Nombre: ${formData.get('nombre-consulta')}\n`;
-        mensaje += `• Celular: ${formData.get('celular-consulta')}\n`;
-        mensaje += `• Email: ${formData.get('email-consulta')}\n\n`;
-        mensaje += `📋 *Rubro a cotizar:* ${formData.get('rubro-consulta')}\n`;
-        mensaje += `💬 *Motivo de consulta:* ${formData.get('motivo-consulta')}\n`;
-
-        const encoded = encodeURIComponent(mensaje);
-        window.open(`https://wa.me/5492804010957?text=${encoded}`, '_blank');
-        return;
+        mensaje += `\n*Datos del Comercio:*\n`;
+        mensaje += `- M\u00B2 Cubiertos: ${formData.get('metros-comercio')}\n`;
+        mensaje += `- Pared/Techos: ${formData.get('pared-techos-comercio')}\n`;
+        mensaje += `- Actividad Comercial: ${formData.get('actividad-comercial')}\n`;
       }
 
-      mensaje += `\n📧 *Email:* ${formData.get('email')}\n`;
+
+      mensaje += `\n*Email:* ${formData.get('email')}\n`;
+      mensaje += `*Celular:* ${formData.get('celular')}\n`;
 
       const comentarios = formData.get('comentarios');
       if (comentarios) {
-        mensaje += `\n💬 *Comentarios:* ${comentarios}\n`;
+        mensaje += `\n*Comentarios:* ${comentarios}\n`;
       }
 
       const encoded = encodeURIComponent(mensaje);
