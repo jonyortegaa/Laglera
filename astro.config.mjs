@@ -5,5 +5,5 @@ export default defineConfig({
   integrations: [tailwind()],
   output: 'static',
   site: 'https://www.laglera.com.ar',
-  outDir: './public_html'
+  outDir: './docs'
 });
