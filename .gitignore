@@ -1,3 +1,13 @@
+# dependencias
 node_modules/
+
+# salida de build (se genera automaticamente)
 dist/
+docs/
+
+# archivos internos de astro
 .astro/
+
+# sistema
+.DS_Store
+Thumbs.db
